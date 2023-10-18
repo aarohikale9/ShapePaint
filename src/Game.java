@@ -1,15 +1,33 @@
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+
 public class Game extends PApplet {
+    ArrayList<Shape> shapes = new ArrayList<>();
     // TODO: declare game variables
 
+    int x;
+    int y;
+    int width;
+    int height;
+
+    Shape s;
+
+
     public void settings() {
-        size(800, 800);   // set the window size
+        size(800, 800);// set the window size
+
 
     }
 
     public void setup() {
         // TODO: initialize game variables
+
+        int x = mouseX;
+        int y = mouseY;
+
+        s = new Rect(x, y, width, height);
+        shapes.add(s);
     }
 
     /***
@@ -18,11 +36,13 @@ public class Game extends PApplet {
      */
     public void draw() {
         background(255);    // paint screen white
-        fill(0,255,0);          // load green paint color
-        ellipse(mouseX, mouseY, 60, 60);  // draw circle at mouse loc
-        ellipse(mouseX - 80, mouseY, 60, 60);  // draw circle at mouse loc
-        ellipse(mouseX + 80, mouseY, 60, 60);  // draw circle at mouse loc
+
     }
+
+    public void mousePressed() {
+        s.draw(this);
+    }
+
 
     public static void main(String[] args) {
         PApplet.main("Game");
