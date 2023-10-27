@@ -6,9 +6,6 @@ public class Game extends PApplet {
     ArrayList<Shape> shapes = new ArrayList<>();
     // TODO: declare game variables
 
-    int x;
-    int y;
-
     Shape s;
 
 
