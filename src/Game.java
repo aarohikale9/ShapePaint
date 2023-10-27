@@ -8,8 +8,6 @@ public class Game extends PApplet {
 
     int x;
     int y;
-    int width;
-    int height;
 
     Shape s;
 
@@ -17,17 +15,13 @@ public class Game extends PApplet {
     public void settings() {
         size(800, 800);// set the window size
 
-
     }
 
     public void setup() {
         // TODO: initialize game variables
 
-        int x = mouseX;
-        int y = mouseY;
+        background(255);    // paint screen white
 
-        s = new Rect(x, y, width, height);
-        shapes.add(s);
     }
 
     /***
@@ -35,11 +29,11 @@ public class Game extends PApplet {
      * tick each object (have it update itself), and draw each object
      */
     public void draw() {
-        background(255);    // paint screen white
-
     }
 
-    public void mousePressed() {
+    public void mouseReleased() {
+        s = new Rect(mouseX, mouseY);
+        shapes.add(s);
         s.draw(this);
     }
 
