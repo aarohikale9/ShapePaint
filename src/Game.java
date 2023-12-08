@@ -27,7 +27,24 @@ public class Game extends PApplet {
      * tick each object (have it update itself), and draw each object
      */
     public void draw() {
+        if (keyPressed == true) {
+            if (key == CODED) {
+                if (keyCode == UP) {
+                    shapeLength++;
+                }
+                if (keyCode == DOWN) {
+                    shapeLength--;
+                }
 
+                if (keyCode == RIGHT) {
+                    shapeWidth++;
+                }
+
+                if (keyCode == LEFT) {
+                    shapeWidth--;
+                }
+            }
+        }
     }
 
     public void mouseReleased() {
