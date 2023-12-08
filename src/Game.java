@@ -7,6 +7,10 @@ public class Game extends PApplet {
     Shape s;
     int shapeChoice;
 
+
+
+
+
     public void settings() {
         size(800, 800);// set the window size
 
