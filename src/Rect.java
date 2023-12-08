@@ -14,7 +14,7 @@ public class Rect extends Shape {
 
 
     public void draw(PApplet window) {
-        window.fill(red,green,blue);
+        window.fill(255,0, 0);
         window.rect(x,y,width,height);
     }
 
