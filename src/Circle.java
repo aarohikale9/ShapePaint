@@ -6,8 +6,7 @@ public class Circle extends Shape {
 
 
     public Circle(int x, int y) {
-        super (150, 150);
-
+        super(150, 150);
         this.x  = x;
         this.y = y;
         this.red = (int) (Math.random()*255);

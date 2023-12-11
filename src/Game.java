@@ -1,7 +1,5 @@
 import processing.core.PApplet;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 public class Game extends PApplet {
     ArrayList<Shape> shapes = new ArrayList<>();
@@ -27,24 +25,7 @@ public class Game extends PApplet {
      * tick each object (have it update itself), and draw each object
      */
     public void draw() {
-        if (keyPressed == true) {
-            if (key == CODED) {
-                if (keyCode == UP) {
-                    shapeLength++;
-                }
-                if (keyCode == DOWN) {
-                    shapeLength--;
-                }
 
-                if (keyCode == RIGHT) {
-                    shapeWidth++;
-                }
-
-                if (keyCode == LEFT) {
-                    shapeWidth--;
-                }
-            }
-        }
     }
 
     public void mouseReleased() {
@@ -52,10 +33,21 @@ public class Game extends PApplet {
             s = new Rect(mouseX, mouseY);
             shapes.add(s);
             s.draw(this);
+            try {
+                writeDataToFile("#Types of Shapes.txt", "A rectangle was drawn at (" + mouseX + ", " + mouseY + ") with dimensions " + s.height + " x " + s.width);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
         } else if (shapeChoice % 2 != 0) {
             s = new Circle (mouseX, mouseY);
             shapes.add(s);
             s.draw(this);
+            try {
+                writeDataToFile("#Types of Shapes.txt", "A circle was drawn at (" + mouseX + ", " + mouseY + ") with dimensions " + s.height + " x " + s.width);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }
@@ -75,10 +67,19 @@ public class Game extends PApplet {
         PApplet.main("Game");
 
     }
-    public void writeText() throws IOException {
-        PrintWriter writer = new PrintWriter("#Types of Shapes.txt");
-        writer.println("Number of types of shapes: ");
 
-        writer.close();
+    public static void writeDataToFile(String filePath, String data) throws IOException {
+        try (FileWriter f = new FileWriter(filePath, true);
+             BufferedWriter b = new BufferedWriter(f);
+             PrintWriter writer = new PrintWriter(b);) {
+
+
+            writer.println(data);
+
+
+        } catch (IOException error) {
+            System.err.println("There was a problem writing to the file: " + filePath);
+            error.printStackTrace();
+        }
     }
 }

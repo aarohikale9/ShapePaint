@@ -13,7 +13,24 @@ public class Shape {
     }
 
     public void draw (PApplet window) {
+        if (window.keyPressed) {
+            if (window.key == window.CODED) {
+                if (window.keyCode == window.UP) {
+                    this.height+=5;
+                }
+                if (window.keyCode == window.DOWN) {
+                    this.height-=5;
+                }
 
+                if (window.keyCode == window.RIGHT) {
+                    this.width+=5;
+                }
+
+                if (window.keyCode == window.LEFT) {
+                    this.width-=5;
+                }
+            }
+        }
     }
 
 
