@@ -3,19 +3,17 @@ import processing.core.PImage;
 
 import java.awt.*;
 
-public class Triangle{
-    int red;
-    int blue;
-    int green;
-
-    public Triangle(int x, int y) {
-        red = (int) (Math.random()*255);
-        green = (int) (Math.random()*255);
-        blue = (int) (Math.random()*255);
-    }
-    public void draw(PApplet window, PImage img) {
-        window.fill(red, blue, green);
-        window.image(img, red, blue);
+public class Triangle extends Shape{
+    PImage img;
+    public Triangle(int x, int y, int width, int height, PImage img) {
+        super(width, height);
+        this.x = x;
+        this.y = y;
+        this.img = img;
     }
 
+    @Override
+    public void draw(PApplet window) {
+        window.image(img, x, y, width, height);
+    }
 }

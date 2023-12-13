@@ -1,4 +1,6 @@
 import processing.core.PApplet;
+
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,7 +33,9 @@ public class Game extends PApplet {
      * tick each object (have it update itself), and draw each object
      */
     public void draw() {
-
+        for (Shape shape : shapes) {
+            shape.draw(this);
+        }
     }
 
     public void mouseReleased() {
@@ -43,8 +47,11 @@ public class Game extends PApplet {
             s = new Circle (mouseX, mouseY);
             shapes.add(s);
             s.draw(this);
+        } else  if (shapeChoice % 2 != 0 ){
+            String triangle = "shapes/triangle.png";
+            s = new Triangle(mouseX, mouseY, width, height, loadImage(triangle));
+            shapes.add(s);
         }
-
     }
 
     public void keyReleased() {
@@ -64,7 +71,7 @@ public class Game extends PApplet {
     }
     public void writeText() throws IOException {
         PrintWriter writer = new PrintWriter("#Types of Shapes.txt");
-        writer.println("Number of types of shapes: ");
+        writer.println("Number of types of shapes: " + shapes.size());
 
         writer.close();
     }
