@@ -40,18 +40,19 @@ public class Game extends PApplet {
 
     public void mouseReleased() {
         if (shapeChoice % 2 == 0) {
-            s = new Rect(mouseX, mouseY);
-            shapes.add(s);
-            s.draw(this);
-        } else if (shapeChoice % 2 != 0) {
             s = new Circle (mouseX, mouseY);
             shapes.add(s);
             s.draw(this);
-        } else  if (shapeChoice % 2 != 0 ){
+        } else if (shapeChoice % 3 == 0 ){
             String triangle = "shapes/triangle.png";
-            s = new Triangle(mouseX, mouseY, width, height, loadImage(triangle));
+            s = new Triangle(mouseX, mouseY,loadImage(triangle));
             shapes.add(s);
+        } else {
+            s = new Rect(mouseX, mouseY);
+            shapes.add(s);
+            s.draw(this);
         }
+        System.out.println(shapeChoice);
     }
 
     public void keyReleased() {
