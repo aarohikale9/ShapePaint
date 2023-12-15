@@ -40,7 +40,7 @@ public class Game extends PApplet {
             }
 
         } else if (shapeChoice % 2 != 0) {
-            s = new Circle (mouseX, mouseY);
+            s = new Circle(mouseX, mouseY);
             shapes.add(s);
             s.draw(this);
             try {
@@ -49,7 +49,11 @@ public class Game extends PApplet {
                 throw new RuntimeException(e);
             }
         }
-
+//        } else  if (shapeChoice % 2 != 0 ){
+//            String triangle = "shapes/triangle.png";
+//            s = new Triangle(mouseX, mouseY, width, height, loadImage(triangle));
+//            shapes.add(s);
+//        }
     }
 
     public void keyReleased() {
